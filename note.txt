@@ -1,0 +1,11 @@
+Home
+
+Peta 2D
+Peta 3D
+
+Modul
+-Slug Modul (6) => Title | Deksripsi | Vidio | Thumbnile
+
+10 Objek Pemajuan Budaya (Bikin 10 Page dulu secara statis)
+Kemudian setiap objek memiliki slug (masing masing berbeda)
+

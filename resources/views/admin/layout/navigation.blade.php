@@ -7,8 +7,8 @@
     </div>
     <div class="sidebar-content">
         <ul>
-            <li class="{{ request()->routeIs('home') ? 'active' : '' }}">
-                <a href="{{ route('home') }}" class="link">
+            <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="link">
                     <i class="fa-solid fa-home"></i>
                     <span>Dashboard</span>
                 </a>

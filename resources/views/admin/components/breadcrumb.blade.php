@@ -12,7 +12,7 @@
     $currentPath = '';
 
     if ($pathSegments[0] != '') {
-        echo '<li class="breadcrumb-item"><a href="' . url('/') . '">Home</a></li>';
+        echo '<li class="breadcrumb-item"><a href="' . url('/') . '">Dashboard</a></li>';
     }
 
     foreach ($pathSegments as $key => $segment) {
