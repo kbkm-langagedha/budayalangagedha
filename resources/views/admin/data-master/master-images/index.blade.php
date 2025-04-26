@@ -101,7 +101,7 @@
                             <td>{{ $masterImage->id }}</td>
                             <td>
                                 <!-- Tombol Edit -->
-                                <button type="button" class="btn btn-warning btn-sm"
+                                <button type="button" class="btn btn-warning btn-sm mb-2"
                                     onclick="editMasterImage({{ $masterImage }})" data-bs-toggle="modal"
                                     data-bs-target="#editMasterImageModal">Edit</button>
 
@@ -110,7 +110,7 @@
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"
+                                    <button type="submit" class="btn btn-danger btn-sm mb-2"
                                         onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</button>
                                 </form>
                             </td>

@@ -50,6 +50,21 @@
                     @endif
                 @endcan
             @endforeach
+
+            <!-- Logout Link -->
+            <li class="menu-category">
+                <span class="text-uppercase">Account</span>
+            </li>
+            <li class="mb-5">
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
         </ul>
     </div>
 </nav>

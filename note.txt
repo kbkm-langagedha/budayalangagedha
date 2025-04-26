@@ -1,11 +1,23 @@
 Home
 
+Master Artikel
 Peta 2D
 Peta 3D
 
-Modul
+Anggota =>1
+Artikel & Blog
+Slug Artikel 
+
+Tentang
+Galeri
+Kontak
+
+
+-Modul
 -Slug Modul (6) => Title | Deksripsi | Vidio | Thumbnile
 
-10 Objek Pemajuan Budaya (Bikin 10 Page dulu secara statis)
-Kemudian setiap objek memiliki slug (masing masing berbeda)
+
+
+-10 Objek Pemajuan Budaya (Bikin 10 Page dulu secara statis)
+-Kemudian setiap objek memiliki slug (masing masing berbeda)
 

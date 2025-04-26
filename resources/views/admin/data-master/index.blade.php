@@ -19,7 +19,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="#" class="text-decoration-none">
+                    <a href="{{ route('master-artikel.index') }}" class="text-decoration-none">
                         <div class="card border-primary mb-3">
                             <div class="card-body text-center">
                                 <i class="ti-book h1 text-primary"></i>
