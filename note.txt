@@ -12,6 +12,8 @@ Tentang
 Galeri
 Kontak
 
+Kalender Budaya
+
 
 -Modul
 -Slug Modul (6) => Title | Deksripsi | Vidio | Thumbnile

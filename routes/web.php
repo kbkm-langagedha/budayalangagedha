@@ -17,11 +17,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return view('frontend.welcome');
-    });
+Route::get('/', function () {
+    return view('frontend.welcome');
 });
+
 
 Auth::routes();
 

@@ -1,0 +1,139 @@
+/* Social icons styling */
+.social-icons-vertical {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-50%);
+}
+
+.social-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon-circle a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.social-icon-circle i {
+    color: #fff;
+    /* White icon color */
+    font-size: 18px;
+    /* Control icon size */
+}
+
+.social-icon-circle:hover {
+    background-color: #fff;
+    /* White background on hover */
+}
+
+.social-icon-circle:hover i {
+    color: #59A52C;
+    /* Green icon on hover - replace with your brand color */
+}
+
+/* Hide icons on mobile */
+@media only screen and (max-width: 768px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+
+.opk-section {
+    position: relative;
+    background-image: url('/assets/images/background/shape1.png');
+    background-size: 60% auto;
+    background-position: center top;
+    /* Gambar di bagian atas */
+    background-repeat: no-repeat;
+    padding: 100px 0 60px 0;
+    color: #f0e3c0;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+/* Efek memudar 20% atas */
+.opk-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    
+    /* 20% atas untuk memudar */
+    background: linear-gradient(to bottom,
+            rgb(255, 255, 255) 0%,
+            /* Hampir penuh biar nyatu sama section atas */
+            rgba(237, 236, 236, 0.899) 100%
+            /* Transparan biar gambar kelihatan */
+        );
+    z-index: 1;
+    /* Di atas background, di bawah konten */
+}
+
+/* Overlay untuk 80% bawah */
+.opk-section .de-overlay {
+    position: absolute;
+    top: 20%;
+    /* Mulai dari 20% ke bawah */
+    left: 0;
+    width: 100%;
+    height: 80%;
+    /* Nutupin 80% bawah */
+    background: rgba(237, 236, 236, 0.845);
+    /* Overlay abu-abu */
+    z-index: 1;
+}
+
+.opk-section .container {
+    position: relative;
+    z-index: 2;
+    /* Konten di atas semua */
+}
+
+.opk-section .wave-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 1;
+}
+
+.text-bg {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .opk-section {
+        padding: 40px 0;
+        background-position: top;
+        background-size: contain;
+    }
+
+    .opk-section::before {
+        height: 15%;
+        /* Kurangi area memudar di mobile */
+    }
+
+    .opk-section .de-overlay {
+        top: 15%;
+        height: 85%;
+    }
+
+    .opk-section .wave-shape {
+        height: 100px;
+    }
+}
