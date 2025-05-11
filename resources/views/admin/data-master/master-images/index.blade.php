@@ -126,7 +126,7 @@
             // Isi data pada modal edit
             document.getElementById('edit_nama_master_img').value = masterImage.nama_master_img;
             document.getElementById('edit_keterangan').value = masterImage.keterangan;
-            document.getElementById('editMasterImageForm').action = `/data-master/master-images/${masterImage.id}`;
+            document.getElementById('editMasterImageForm').action = "{{ route('master-images.update', ':id') }}".replace(':id', masterImage.id);
         }
     </script>
 @endsection

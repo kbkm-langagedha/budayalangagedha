@@ -4,7 +4,7 @@
     <div class="row">
         <div class="d-flex justify-content-between align-items-center">
             <h4 class="fw-bold">Artikel</h4>
-            @can('create data-artikel')
+            @can('create admin/data-artikel')
                 <a href="{{ route('data-artikel.create') }}" class="btn btn-primary">
                     <i class="fas fa-plus"></i> Tambah Artikel
                 </a>
@@ -80,23 +80,33 @@
                             orderable: false,
                             searchable: false,
                             render: function(data, type, row) {
+                                console.log('ID:', data); // Debugging: Pastikan `data` adalah ID artikel
                                 let actions = '<div class="d-flex gap-1">';
                                 
+                                let showBaseUrl = "{{ url('admin/data-artikel') }}/"; // Base URL untuk show
+                                let showUrl = showBaseUrl + data;
+                                console.log('Show URL:', showUrl); // Debugging: Pastikan URL benar
                                 actions += `
-                                    <a href="/data-artikel/${data}" class="btn btn-info btn-sm me-1" title="Lihat">
+                                    <a href="${showUrl}" class="btn btn-info btn-sm me-1" title="Lihat">
                                         <i class="fas fa-eye"></i>
                                     </a>`;
                                 
-                                @can('update data-artikel')
+                                @can('update admin/data-artikel')
+                                let editBaseUrl = "{{ url('admin/data-artikel') }}/";
+                                let editUrl = editBaseUrl + data + '/edit';
+                                console.log('Edit URL:', editUrl); // Debugging: Pastikan URL benar
                                 actions += `
-                                    <a href="/data-artikel/${data}/edit" class="btn btn-warning btn-sm me-1" title="Edit">
+                                    <a href="${editUrl}" class="btn btn-warning btn-sm me-1" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>`;
                                 @endcan
 
-                                @can('delete data-artikel')
+                                @can('delete admin/data-artikel')
+                                let destroyBaseUrl = "{{ url('admin/data-artikel') }}/";
+                                let destroyUrl = destroyBaseUrl + data;
+                                console.log('Destroy URL:', destroyUrl); // Debugging: Pastikan URL benar
                                 actions += `
-                                    <form action="/data-artikel/${data}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus artikel ini?')">
+                                    <form action="${destroyUrl}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus artikel ini?')">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm" title="Hapus">

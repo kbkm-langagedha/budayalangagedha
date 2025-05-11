@@ -12,4 +12,9 @@ class MasterImages extends Model
     protected $table = 'master_images';
     protected $fillable = ['nama_master_img', 'keterangan'];
 
+    public function dataGambar()
+    {
+        return $this->hasMany(DataGambar::class, 'id_master');
+    }
+
 }

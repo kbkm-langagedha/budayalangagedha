@@ -5,10 +5,13 @@
         <div class="col-md-12">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="fw-bold">{{ $title }}</h4>
-                <a href="{{ route('anggota-team.create') }}" class="btn btn-primary btn-sm">
-                    <i class="ti-plus"></i>
-                    Tambah Anggota
-                </a>
+
+                @can('create admin/kalender-ritual')
+                    <a href="{{ route('kalender-ritual.create') }}" class="btn btn-primary btn-sm">
+                        <i class="ti-plus"></i>
+                        Tambah Data
+                    </a>
+                @endcan
             </div>
         </div>
     </div>
@@ -22,14 +25,12 @@
                             <thead>
                                 <tr>
                                     <th width="50px">No</th>
-                                    <th>Nama</th>
-                                    <th>Posisi</th>
-                                    <th>Photo</th>
-                                    <th>Nomor HP</th>
-                                    <th>Email</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Social Media</th>
-                                    <th width="100px">Action</th>
+                                    <th>Nama Ritual</th>
+                                    <th>Tanggal</th>
+                                    <th>Lokasi</th>
+                                    <th>Gambar</th>
+                                    <th>Status</th>
+                                    <th width="120px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +50,7 @@
             var table = $('.dataTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('anggota-team.index') }}",
+                ajax: "{{ route('kalender-ritual.index') }}",
                 columnDefs: [{
                     "targets": "_all",
                     "className": "text-start"
@@ -64,44 +65,27 @@
                         }
                     },
                     {
-                        data: 'nama',
-                        name: 'nama'
+                        data: 'nama_ritual',
+                        name: 'nama_ritual'
                     },
                     {
-                        data: 'posisi',
-                        name: 'posisi',
-                        render: function(data, type, full) {
-                            return data ? data : '-';
-                        }
+                        data: 'tanggal_lengkap',
+                        name: 'tanggal'
                     },
                     {
-                        data: 'photo',
-                        name: 'photo',
+                        data: 'lokasi',
+                        name: 'lokasi'
+                    },
+                    {
+                        data: 'gambar',
+                        name: 'gambar',
                         orderable: false,
                         searchable: false
                     },
                     {
-                        data: 'nomor_hp',
-                        name: 'nomor_hp',
-                        render: function(data, type, full) {
-                            return data ? data : '-';
-                        }
-                    },
-                    {
-                        data: 'email',
-                        name: 'email',
-                        render: function(data, type, full) {
-                            return data ? data : '-';
-                        }
-                    },
-                    {
-                        data: 'tanggal_lahir',
-                        name: 'tanggal_lahir'
-                    },
-                    {
-                        data: 'social_media',
-                        name: 'social_media',
-                        orderable: false,
+                        data: 'status_badge',
+                        name: 'status',
+                        orderable: true,
                         searchable: false
                     },
                     {
@@ -114,8 +98,8 @@
             });
 
             // delete
-            $('body').on('click', '.deleteAnggota', function() {
-                var anggotaId = $(this).data('id');
+            $('body').on('click', '.deleteKalenderRitual', function() {
+                var ritualId = $(this).data('id');
                 Swal.fire({
                     title: 'Apakah anda yakin?',
                     text: "Data yang dihapus tidak dapat dikembalikan!",
@@ -129,7 +113,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: "POST",
-                            url: "{{ url('admin/anggota-team') }}/" + anggotaId,
+                            url: "{{ url('admin/kalender-ritual') }}/" + ritualId,
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },

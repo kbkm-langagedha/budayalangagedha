@@ -5,13 +5,69 @@ namespace App\Http\Controllers;
 use App\Models\AnggotaTeam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
 
 class AnggotaTeamController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $anggotaTeams = AnggotaTeam::all();
-        return view('admin.anggota-team.index', compact('anggotaTeams'));
+        if ($request->ajax()) {
+            $data = AnggotaTeam::query();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('photo', function ($row) {
+                    if ($row->photo) {
+                        return '<img src="' . asset('storage/' . $row->photo) . '" width="50" class="img-thumbnail" alt="Team Photo">';
+                    }
+                    return '<span class="badge bg-secondary">No Photo</span>';
+                })
+                ->addColumn('tanggal_lahir', function ($row) {
+                    if ($row->tanggal_lahir) {
+                        return \Carbon\Carbon::parse($row->tanggal_lahir)->format('d/m/Y');
+                    }
+                    return '-';
+                })
+                ->addColumn('social_media', function ($row) {
+                    $social = '';
+                    if ($row->instagram) {
+                        $social .= '<a href="' . $row->instagram . '" target="_blank" class="me-2">';
+                        $social .= '<i class="fab fa-instagram fa-lg text-danger"></i>';
+                        $social .= '</a>';
+                    }
+
+                    if ($row->linkedin) {
+                        $social .= '<a href="' . $row->linkedin . '" target="_blank">';
+                        $social .= '<i class="fab fa-linkedin fa-lg text-primary"></i>';
+                        $social .= '</a>';
+                    }
+
+                    if (!$row->instagram && !$row->linkedin) {
+                        $social = '-';
+                    }
+
+                    return $social;
+                })
+                ->addColumn('action', function ($row) {
+                    $btn = '<div class="d-flex">';
+                    $btn .= '<a href="' . route('anggota-team.edit', $row->id) . '" class="btn btn-primary btn-sm me-1"><i class="ti-pencil"></i></a>';
+                    $btn .= '<button type="button" data-id="' . $row->id . '" class="btn btn-danger btn-sm deleteAnggota"><i class="ti-trash"></i></button>';
+                    $btn .= '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['photo', 'social_media', 'action'])
+                ->make(true);
+        }
+
+        $data = [
+            'title' => 'Anggota Team',
+            'breadcrumb' => [
+                ['title' => 'Dashboard', 'url' => route('dashboard')],
+                ['title' => 'Anggota Team', 'url' => '#']
+            ],
+        ];
+
+        return view('admin.anggota-team.index', $data);
     }
 
     public function create()

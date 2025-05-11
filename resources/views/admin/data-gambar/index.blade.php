@@ -20,7 +20,7 @@
 
             <!-- Tambah Image button on the right -->
             <div class="col-md-6 text-end">
-                @can('create data-gambar')
+                @can('create admin/data-gambar')
                     <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal"
                         data-bs-target="#createImageModal">
                         Tambah Image
@@ -50,14 +50,14 @@
                             <td>{{ $image->masterImages->nama_master_img ?? '-' }}</td>
                             <td>
                                 <!-- Tombol Edit -->
-                                @can('update data-gambar')
+                                @can('update admin/data-gambar')
                                     <button type="button" class="btn btn-warning btn-sm"
                                         onclick="editImage({{ $image }})" data-bs-toggle="modal"
                                         data-bs-target="#editImageModal">Edit</button>
                                 @endcan
 
                                 <!-- Tombol Hapus -->
-                                @can('delete data-gambar')
+                                @can('delete admin/data-gambar')
                                     <form action="{{ route('data-gambar.destroy', $image->id) }}" method="POST"
                                         style="display: inline;">
                                         @csrf
@@ -81,7 +81,7 @@
             // Function to edit image data in modal
             function editImage(image) {
                 const form = document.getElementById('editImageForm');
-                form.action = `/data-gambar/${image.id}`;
+                form.action = "{{ route('data-gambar.update', 0) }}".replace('/0', '/' + image.id);
 
                 document.getElementById('edit_title').value = image.title;
                 document.getElementById('edit_id_master').value = image.id_master;

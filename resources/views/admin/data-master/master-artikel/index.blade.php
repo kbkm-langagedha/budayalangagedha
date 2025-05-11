@@ -153,7 +153,7 @@
                 // Populate modal fields
                 document.getElementById('edit_nama_master_artikel').value = masterArtikel.nama_master_artikel;
                 document.getElementById('edit_keterangan').value = masterArtikel.keterangan;
-                document.getElementById('editMasterArtikelForm').action = `{{ url('data-master/master-artikel') }}/${masterArtikel.id}`;
+                document.getElementById('editMasterArtikelForm').action ="{{ route('master-artikel.update', ':id') }}".replace(':id', masterArtikel.id);
             }
         </script>
     @endpush

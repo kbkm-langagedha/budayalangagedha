@@ -20,7 +20,7 @@
 
             <!-- Tambah Modul button -->
             <div class="col-md-6 text-end">
-                @can('create modul-pembelajaran')
+                @can('create admin/modul-pembelajaran')
                     <a href="{{ route('modul-pembelajaran.create') }}" class="btn btn-primary mt-4">
                         Tambah Modul
                     </a>
@@ -63,11 +63,11 @@
                             <td>
                                 <a href="{{ route('modul-pembelajaran.show', $modul->id) }}"
                                     class="btn btn-info btn-sm mb-2">Lihat</a>
-                                @can('update modul-pembelajaran')
+                                @can('update admin/modul-pembelajaran')
                                     <a href="{{ route('modul-pembelajaran.edit', $modul->id) }}"
                                         class="btn btn-warning btn-sm mb-2">Edit</a>
                                 @endcan
-                                @can('delete modul-pembelajaran')
+                                @can('delete admin/modul-pembelajaran')
                                     <form action="{{ route('modul-pembelajaran.destroy', $modul->id) }}" method="POST"
                                         style="display: inline;">
                                         @csrf
