@@ -22,6 +22,10 @@ class KalenderRitual extends Model
         'status'
     ];
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
     // Method untuk mendapatkan bulan dalam format teks
     public function getBulanTextAttribute()
     {
@@ -62,5 +66,10 @@ class KalenderRitual extends Model
         ];
 
         return $bulanArray[$this->bulan] ?? '';
+    }
+
+    public function getTanggalLengkapAttribute()
+    {
+        return $this->tanggal . ' ' . $this->bulan_text;
     }
 }

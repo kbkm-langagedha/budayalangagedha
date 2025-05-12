@@ -1015,7 +1015,7 @@ header.header-light #mainmenu a {
 }
 
 #mainmenu li a.active{
-  color:var(--primary-color) !important;
+  color: #a19267 !important;
 }
 
 #mainmenu li ul {

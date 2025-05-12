@@ -20,20 +20,18 @@
             @foreach (getMenus() as $menu)
                 @can('read ' . $menu->url)
                     @if ($menu->type_menu == 'parent')
-                        <li class="{{ getParentMenus(request()->segment(1)) == $menu->name ? 'active open' : '' }}"> <a
-                                href="#" class="main-menu has-dropdown">
+                        <li class="{{ isParentActive($menu, $menu->subMenus) ? 'active open' : '' }}">
+                            <a href="#" class="main-menu has-dropdown">
                                 <i class="{{ $menu->icon }}"></i>
                                 <span class="text-capitalize">{{ $menu->name }}</span>
                             </a>
-                            <ul class="sub-menu {{ getParentMenus(request()->segment(1)) == $menu->name ? 'expand' : '' }}">
+                            <ul class="sub-menu {{ isParentActive($menu, $menu->subMenus) ? 'expand' : '' }}">
                                 @foreach ($menu->subMenus as $submenu)
                                     @can('read ' . $submenu->url)
-                                        <li
-                                            class="{{ request()->segment(1) == explode('/', $submenu->url)[0] ? 'active' : '' }}">
+                                        <li class="{{ isMenuActive($submenu->url) ? 'active' : '' }}">
+                                            <!-- PERBAIKAN: Hilangkan "admin/" dari URL -->
                                             <a href="{{ url($submenu->url) }}" class="link">
-                                                <span class="text-capitalize">
-                                                    {{ $submenu->name }}
-                                                </span>
+                                                <span class="text-capitalize">{{ $submenu->name }}</span>
                                             </a>
                                         </li>
                                     @endcan
@@ -41,7 +39,8 @@
                             </ul>
                         </li>
                     @elseif ($menu->type_menu == 'single')
-                        <li class="{{ request()->segment(1) == $menu->url ? 'active' : '' }}">
+                        <li class="{{ isMenuActive($menu->url) ? 'active' : '' }}">
+                            <!-- PERBAIKAN: Hilangkan "admin/" dari URL -->
                             <a href="{{ url($menu->url) }}" class="link">
                                 <i class="{{ $menu->icon }}"></i>
                                 <span class="text-capitalize">{{ $menu->name }}</span>
@@ -57,7 +56,7 @@
             </li>
             <li class="mb-5">
                 <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>

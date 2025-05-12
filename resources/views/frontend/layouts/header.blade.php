@@ -25,7 +25,7 @@
                     <div class="de-flex-col">
                         <!-- logo begin -->
                         <div id="logo">
-                            <a href="#">
+                            <a href="{{ route('welcome') }}">
                                 <img class="logo-main" style="width: 30%;"
                                     src="{{ asset('assets/images/icon.png') }}" alt="">
                                 <img class="logo-mobile" style="width: 30%;"
@@ -37,9 +37,9 @@
                     <div class="de-flex-col header-col-mid">
                         <!-- mainmenu begin -->
                         <ul id="mainmenu">
-                            <li><a class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Home</a>
+                            <li><a class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}" style="color: #F2E3BB;" href="{{ route('welcome') }}">Home</a>
                             </li>
-                            <li><a class="menu-item {{ request()->routeIs('modul*') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Modul</a>
+                            <li><a class="menu-item {{ request()->routeIs('modul*') ? 'active' : '' }}" style="color: #F2E3BB;" href="{{ route('modul') }}">Modul</a>
                             </li>
                             <li><a class="menu-item {{ request()->routeIs('objek-kebudayaan*') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Objek Kebudayaan</a>
                             </li>
@@ -53,7 +53,7 @@
                             <li><a class="menu-item {{ request()->routeIs('tentang*') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Tentang</a>
                                 <ul>
                                     <li><a href="#">Tentang Desa</a></li>
-                                    <li><a href="#">Kalender Budaya</a></li>
+                                    <li><a href="{{ route('kalender-ritual') }}">Kalender Budaya</a></li>
                                     <li><a href="#">Gallery</a></li>
                                     <li><a href="#">Kontak</a></li>
                                 </ul>

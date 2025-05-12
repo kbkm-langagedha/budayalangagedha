@@ -66,7 +66,7 @@
                                         </label>
                                         <input type="text" class="form-control @error('meta_keyword') is-invalid @enderror" 
                                                id="meta_keyword" name="meta_keyword" 
-                                               value="{{ old('meta_keyword', is_array(json_decode($modulPembelajaran->meta_keyword, true)) ? implode(', ', json_decode($modulPembelajaran->meta_keyword, true)) : '') }}" 
+                                               value="{{ old('meta_keyword', implode(', ', $modulPembelajaran->meta_keyword)) }}" 
                                                placeholder="Masukkan kata kunci, pisahkan dengan koma">
                                         <div class="form-text">Contoh: pembelajaran, modul, edukasi</div>
                                         @error('meta_keyword')

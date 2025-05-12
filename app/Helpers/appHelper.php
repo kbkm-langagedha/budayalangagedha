@@ -22,10 +22,44 @@ if (!function_exists('getParentMenus')) {
     }
 }
 
-
 if (!function_exists('getRoles')) {
     function getRoles()
     {
         return Role::where('name', '!=', 'admin')->get();
+    }
+}
+
+// Perbaikan fungsi isParentActive
+if (!function_exists('isParentActive')) {
+    function isParentActive($menu, $subMenus)
+    {
+        // Cek apakah route utama aktif
+        if (request()->routeIs($menu->url . '*')) {
+            return true;
+        }
+
+        // Cek apakah URL utama aktif, tanpa "admin/" tambahan
+        if (request()->is($menu->url . '*')) {
+            return true;
+        }
+
+        // Cek apakah salah satu submenu aktif
+        foreach ($subMenus as $submenu) {
+            if (request()->is($submenu->url . '*') || request()->routeIs($submenu->url . '*')) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+// Perbaikan fungsi isMenuActive
+if (!function_exists('isMenuActive')) {
+    function isMenuActive($menuUrl)
+    {
+        // Cek tanpa duplikasi "admin/"
+        return request()->routeIs($menuUrl . '*') ||
+            request()->is($menuUrl . '*');
     }
 }

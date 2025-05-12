@@ -11,11 +11,12 @@
         <div class="spacer-30-line"></div>
 
         <ul class="no-style">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Modul</a></li>
+            <li><a href="{{ route('welcome') }}">Home</a></li>
+            <li><a href="{{ route('modul') }}">Modul</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Peta Budaya</a></li>
             <li><a href="#">Peta 3D</a></li>
+            <li><a href="{{ route('kalender-ritual') }}">Kalender Budaya</a></li>
             <li><a href="#">Tentang Desa</a></li>
             <li><a href="#">Contact</a></li>
         </ul>

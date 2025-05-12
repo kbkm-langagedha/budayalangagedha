@@ -24,10 +24,7 @@
                                 <tr>
                                     <th>Meta Keywords</th>
                                     <td>
-                                        @php
-                                            $keywords = json_decode($modulPembelajaran->meta_keyword, true);
-                                        @endphp
-                                        {{ is_array($keywords) && !empty($keywords) ? implode(', ', $keywords) : '-' }}
+                                        {{ !empty($modulPembelajaran->meta_keyword) ? implode(', ', $modulPembelajaran->meta_keyword) : '-' }}
                                     </td>
                                 </tr>
                                 <tr>

@@ -9,6 +9,7 @@
     <meta content="@yield('description', 'Budaya Langagedha - Nusa Tenggara Timur')" name="description">
     <meta content="@yield('keywords', '')" name="keywords">
     <meta content="@yield('author', '')" name="author">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- CSS Files
     ================================================== -->
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap">
