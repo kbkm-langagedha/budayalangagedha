@@ -26,7 +26,13 @@
                             </tr>
                             <tr>
                                 <th>Kategori</th>
-                                <td>{{ $dataArtikel->kategori->nama_kategori }}</td>
+                                <td>
+                                    @if($dataArtikel->kategori)
+                                        {{ $dataArtikel->kategori->nama_master_artikel }}
+                                    @else
+                                        Tidak ada kategori
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Status</th>
@@ -62,7 +68,7 @@
                             </tr>
                             <tr>
                                 <th>Dibuat Oleh</th>
-                                <td>{{ $dataArtikel->creator->name }}</td>
+                                <td>{{ $dataArtikel->creator ? $dataArtikel->creator->name : '-' }}</td>
                             </tr>
                             <tr>
                                 <th>Diupdate Oleh</th>
@@ -70,7 +76,7 @@
                             </tr>
                             <tr>
                                 <th>Dibuat Pada</th>
-                                <td>{{ $dataArtikel->created_at->format('d/m/Y H:i') }}</td>
+                                <td>{{ $dataArtikel->created_at->format('d/m/Y H:i') ?? '-' }}</td>
                             </tr>
                             <tr>
                                 <th>Diupdate Pada</th>

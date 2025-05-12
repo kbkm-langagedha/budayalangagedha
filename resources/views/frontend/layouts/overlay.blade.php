@@ -13,7 +13,8 @@
         <ul class="no-style">
             <li><a href="{{ route('welcome') }}">Home</a></li>
             <li><a href="{{ route('modul') }}">Modul</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="{{ route('objek-budaya') }}">Objek Kebudayaan</a></li>
+            <li><a href="{{ route('artikel') }}">Blog</a></li>
             <li><a href="#">Peta Budaya</a></li>
             <li><a href="#">Peta 3D</a></li>
             <li><a href="{{ route('kalender-ritual') }}">Kalender Budaya</a></li>

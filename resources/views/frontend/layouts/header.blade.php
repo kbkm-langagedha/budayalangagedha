@@ -41,7 +41,7 @@
                             </li>
                             <li><a class="menu-item {{ request()->routeIs('modul*') ? 'active' : '' }}" style="color: #F2E3BB;" href="{{ route('modul') }}">Modul</a>
                             </li>
-                            <li><a class="menu-item {{ request()->routeIs('objek-kebudayaan*') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Objek Kebudayaan</a>
+                            <li><a class="menu-item {{ request()->routeIs('objek-kebudayaan*') ? 'active' : '' }}" style="color: #F2E3BB;" href="{{ route('objek-budaya') }}">Objek Kebudayaan</a>
                             </li>
                             <li><a class="menu-item {{ request()->routeIs('peta*') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Peta</a>
                                 <ul>
@@ -49,7 +49,7 @@
                                     <li><a href="#">Peta 3D</a></li>
                                 </ul>
                             </li>
-                            <li><a class="menu-item {{ request()->routeIs('blog*') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Blog</a>
+                            <li><a class="menu-item {{ request()->routeIs('blog*') ? 'active' : '' }}" style="color: #F2E3BB;" href="{{ route('artikel') }}">Blog</a>
                             <li><a class="menu-item {{ request()->routeIs('tentang*') ? 'active' : '' }}" style="color: #F2E3BB;" href="#">Tentang</a>
                                 <ul>
                                     <li><a href="#">Tentang Desa</a></li>
