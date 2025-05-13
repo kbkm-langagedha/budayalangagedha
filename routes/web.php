@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\AnggotaTeamController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ContactController as AdminContactController;
 use App\Http\Controllers\DataGambarController;
 use App\Http\Controllers\DataMasterController;
+use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\ArtikelController as FrontendArtikelController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\GaleryController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\Frontend\KalenderController;
 use App\Http\Controllers\Frontend\ModulController;
@@ -24,13 +28,25 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [FrontendHomeController::class, 'welcome'])->name('welcome');
-Route::get('/objek-budaya', [ObjekKebudayaanController::class, 'objekBudaya'])->name('objek-budaya');
 Route::get('/artikel', [FrontendArtikelController::class, 'artikel'])->name('artikel');
 Route::get('/artikel/{slug}', [FrontendArtikelController::class, 'show'])->name('artikel.show');
 Route::get('/modul', [ModulController::class, 'modul'])->name('modul');
 Route::post('/modul/increment-view/{id}', [ModulController::class, 'incrementView'])->name('modul.increment-view');
 Route::get('/kalender-ritual', [KalenderController::class, 'kalender'])->name('kalender-ritual');
 Route::get('/kalender-ritual/month/{bulan}', [KalenderController::class, 'getRitualsByMonth'])->name('kalender-ritual.month');
+Route::get('/tentang-desa', [AboutController::class, 'tentangDesa'])->name('tentang-desa');
+Route::get('galeri-desa', [GaleryController::class, 'galeryDesa'])->name('galeri-desa');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::prefix('objek-budaya')->group(function () {
+    Route::get('/', [ObjekKebudayaanController::class, 'objekBudaya'])->name('objek-budaya');
+    Route::get('/objek1', [ObjekKebudayaanController::class, 'objek1'])->name('objek-budaya.objek1');
+    Route::get('/objek2', [ObjekKebudayaanController::class, 'objek2'])->name('objek-budaya.objek2');
+    Route::get('/objek3', [ObjekKebudayaanController::class, 'objek3'])->name('objek-budaya.objek3');
+    Route::get('/objek4', [ObjekKebudayaanController::class, 'objek4'])->name('objek-budaya.objek4');
+    Route::get('/objek5', [ObjekKebudayaanController::class, 'objek5'])->name('objek-budaya.objek5');
+});
 
 Auth::routes();
 
@@ -91,5 +107,11 @@ Route::middleware('auth')->group(function () {
         Route::get('kalender-ritual/{ritual}/edit', [KalenderRitualController::class, 'edit'])->name('kalender-ritual.edit');
         Route::put('kalender-ritual/{ritual}', [KalenderRitualController::class, 'update'])->name('kalender-ritual.update');
         Route::delete('kalender-ritual/{ritual}', [KalenderRitualController::class, 'destroy'])->name('kalender-ritual.destroy');
+
+        Route::get('data-contact', [AdminContactController::class, 'dataKontak'])->name('data-contact.index');
+        Route::get('data-contact/{id}', [AdminContactController::class, 'show'])->name('data-contact.show');
+        Route::post('data-contact/{id}/mark-read', [AdminContactController::class, 'markAsRead'])->name('data-contact.mark-read');
+        Route::delete('data-contact/{id}', [AdminContactController::class, 'destroy'])->name('data-contact.destroy');
+        Route::get('data-contact/unread/count', [AdminContactController::class, 'getUnreadCount'])->name('data-contact.unread-count');
     });
 });

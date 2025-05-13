@@ -18,8 +18,9 @@
             <li><a href="#">Peta Budaya</a></li>
             <li><a href="#">Peta 3D</a></li>
             <li><a href="{{ route('kalender-ritual') }}">Kalender Budaya</a></li>
-            <li><a href="#">Tentang Desa</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{{ route('tentang-desa') }}">Tentang Desa</a></li>
+            <li><a href="{{ route('galeri-desa') }}">Gallery</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
 
         <div class="spacer-30-line"></div>

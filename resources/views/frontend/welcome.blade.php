@@ -465,7 +465,7 @@
                                 Langagedha sebagai salah satu kampung adat yang masih melestarikan budaya
                                 asli suku Ngada di Flores.</p>
                             <div class="spacer-10"></div>
-                            <a href="#" class="btn-line">Selengkapnya</a>
+                            <a href="{{ route('tentang-desa') }}" class="btn-line">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
